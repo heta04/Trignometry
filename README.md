@@ -1,4 +1,4 @@
 # Trignometry
 
 This project contains custom trignometric class will functions for cos, sin and tan.
-It has a faility ti calculate both, radian and degree values.
+Along with the calcution from radian value, it can also calculate values from degree which is missing in Math class.
