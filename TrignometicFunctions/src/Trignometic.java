@@ -78,7 +78,7 @@ public class Trignometic {
 				 status=1;
 			 }
 			 
-			 double sin=1,term, numerator=1, denominator,sign=-1;
+			 double cos=1,term, numerator=1, denominator,sign=-1;
 			 int f=2,p=2;
 			 
 		        do{
@@ -87,13 +87,13 @@ public class Trignometic {
 		            denominator=fact(f);
 		            f+=2;
 		            term=numerator/denominator;
-		            sin=sin+(sign*term);
+		            cos=cos+(sign*term);
 		            sign*=-1;
 		            
 		        }
 		        while(term>=0.0);
 		        
-		        return status==1?-1*sin:sin;
+		        return cos;
 			 
 			 
 		        
@@ -102,8 +102,7 @@ public class Trignometic {
 		 		 
 		 public static double tan(double x){
 			 
-			 //to do...
-			 return 0;
+			 return sine2(x)/cos(2);
 		 }
 		 
 	
@@ -112,6 +111,7 @@ public class Trignometic {
 	    	
 	    	System.out.println(Math.cos(0.7853981633974483)+" "+cos(0.7853981633974483));
 	    	System.out.println(Math.sin(0.7853981633974483)+" "+sine2(0.7853981633974483));
+		System.out.println(Math.tan(0.7853981633974483)+" "+tan(0.7853981633974483));
 
 	        
 	    }
