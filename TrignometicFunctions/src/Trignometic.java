@@ -2,119 +2,114 @@ import java.util.*;
 
 public class Trignometic {
 
-	static double pie=3.141592653589793;
-	
-	
-		static double power(double num, int pow) {
+	static double pie = 3.141592653589793;					//assign the value of pie
+
+	static double power(double num, int pow) {
 
 		double result = 1;
+		try {
+			
+			//directly return 1 if the power if 0 
+			if (pow == 0)
+				result = 1;
 
-		while (pow > 0) {
+			//throw exception if the power is in negative
+			else if (pow < 0)
+				throw new Exception("Negative number not allowed");
 
-			result *= num;
+			else {
 
-			pow--;
-		}
-			return result;
-		}
+				while (pow > 0)
+				{
 
+					result *= num;
 
-	
-		static int fact(int num) 
-		{ 
-			if (num == 0) 
-	        return 1; 
-	  
-			// To store factorial of the number 
-			int fact = 1; 
-			for (int i = 1; i <= num; i++) 
-	        fact = fact * i; 
-	  
-			// Return the factorial of a number 
-			return fact; 
+					pow--;
+				}
+
+			}
 		} 
-	
-		public static double toradian(double degree) {
-			 // to do ....
-			
-			return degree*(pie/180);
-			
-			
+		catch (Exception e) {
+			System.out.println(e.getMessage());
 		}
-		
-		 public static double sine2(double x){
-			 
-			 int status=0;
-			 if(x<0) {
-				 x=x*-1;
-				 status=1;
-			 }
-			 
-			 double sin=x,term, numerator=x, denominator=1, 
-		        		xsquare=x*x, factorial=1, sign=-1;
-		        do{
-		            numerator *= xsquare;
-		            denominator=denominator*(factorial+1)*(factorial+2);
-		            factorial=factorial+2;
-		            term=numerator/denominator;
-		            sin=sin+(sign*term);
-		            sign*=-1;
-		        }
-		        while(term>0.00);
-		        
-		        return status==1?-1*sin:sin;
-			 
-			 
-		 }
-		 
-		 
-		 
-		 
-		 public static double cos(double x){
-			 
-			 int status=0;
-			 if(x<0) {
-				 x=x*-1;
-				 status=1;
-			 }
-			 
-			 double cos=1,term, numerator=1, denominator,sign=-1;
-			 int f=2,p=2;
-			 
-		        do{
-		            numerator=power(x,p);
-		            p+=2;
-		            denominator=fact(f);
-		            f+=2;
-		            term=numerator/denominator;
-		            cos=cos+(sign*term);
-		            sign*=-1;
-		            
-		        }
-		        while(term>=0.0);
-		        
-		        return cos;
-			 
-			 
-		        
-		 }
-		  
-		 		 
-		 public static double tan(double x){
-			 
-			 return sine2(x)/cos(2);
-		 }
-		 
-	
-	 
-	    public static void main(String args[]){
-	    	
-	    	System.out.println(Math.cos(0.7853981633974483)+" "+cos(0.7853981633974483));
-	    	System.out.println(Math.sin(0.7853981633974483)+" "+sine2(0.7853981633974483));
-		System.out.println(Math.tan(0.7853981633974483)+" "+tan(0.7853981633974483));
 
-	        
-	    }
+		return result;
+
 	}
 
+	static int fact(int num) {
+		if (num == 0)
+			return 1;
 
+		//store factorial of the number
+		int fact = 1;
+		for (int i = 1; i <= num; i++)
+			fact = fact * i;
+
+		// Return the factorial 
+		return fact;
+	}
+
+	public static double toradian(double degree) {
+		// to do ....
+
+		return 0;
+	}
+
+	public static double sine2(double x) {
+
+		double sin = x, term, numerator = x, denominator = 1, xsquare = x * x, factorial = 1, sign = -1;
+		do {
+			numerator *= xsquare;												//calculates the numerator part of the taylor series
+			denominator = denominator * (factorial + 1) * (factorial + 2);		//calculates the denominator part of the taylor series
+			factorial = factorial + 2;
+			term = numerator / denominator;
+			sin = sin + (sign * term);											//adds up the series and assigns proper sign of either + or -
+			sign *= -1;
+		} while (term > 0.00);
+
+		return sin;																//return the value of sin(x)
+
+	}
+
+	public static double cos(double x) {
+		double cos = 1, term, numerator = 1, denominator, sign = -1;
+		int i = 2;
+
+		do {
+			numerator = power(x, i);				//calculates the numerator part of the taylor series
+			denominator = fact(i);				    //calculates the denominator part of the taylor series
+			term = numerator / denominator;
+			cos = cos + (sign * term);			   //adds up the series and assigns proper sign of either + or -
+			sign *= -1;
+			i += 2;
+
+		} while (i <= 13);
+
+		return cos;									//return the value of cos(x)
+
+	}
+
+	public static double tan(double x) {
+
+		return sine2(x) / cos(x);				//returns the value of tan(x) because tan(x)=sin(x)/cos(x)
+	}
+
+	public static void main(String args[]) {
+
+		double x = 0;
+
+		Scanner sc = new Scanner(System.in);
+
+		System.out.println("Enter the value of x in radian : ");
+		x = sc.nextDouble();
+
+		System.out.println("sin(" + x + ") : " + sine2(x));
+
+		System.out.println("cos(" + x + ") : " + cos(x));
+		System.out.println("tan(" + x + ") : " + tan(x));
+
+		sc.close();
+
+	}
+}
