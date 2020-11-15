@@ -59,7 +59,7 @@ class TrignometricTest {
 			
 		 assertEquals(Math.cos(Math.toRadians(20)), Trignometic.cos(Trignometic.toradian(20)),0.0001);
 		 assertEquals(Math.cos(Math.toRadians(110)), Trignometic.cos(Trignometic.toradian(110)),0.0001);
-		 assertEquals(Math.cos(Math.toRadians(270)), Trignometic.cos(Trignometic.toradian(270)),0.0001);
+		 assertEquals(Math.cos(Math.toRadians(120)), Trignometic.cos(Trignometic.toradian(120)),0.0001);
 			
 	}
 	
@@ -79,7 +79,7 @@ class TrignometricTest {
 			
 		 assertEquals(Math.tan(Math.toRadians(20)), Trignometic.tan(Trignometic.toradian(20)),0.0001);
 		 assertEquals(Math.tan(Math.toRadians(110)), Trignometic.tan(Trignometic.toradian(110)),0.0001);
-		 assertEquals(Math.tan(Math.toRadians(270)), Trignometic.tan(Trignometic.toradian(270)),0.0001);
+		 assertEquals(Math.tan(Math.toRadians(120)), Trignometic.tan(Trignometic.toradian(120)),0.0001);
 				
 	}
 }
