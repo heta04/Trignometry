@@ -51,9 +51,8 @@ public class Trignometic {
 	}
 
 	public static double toradian(double degree) {
-		// to do ....
-
-		return 0;
+		
+		return degree*(pie/180);
 	}
 
 	public static double sine2(double x) {
@@ -97,17 +96,38 @@ public class Trignometic {
 
 	public static void main(String args[]) {
 
-		double x = 0;
+		int c=0;
+		double x = 0,rad;
 
+		
+		
+		System.out.println("1. Radian \n2. Degree");
+		System.out.println("Choose the type of input");
 		Scanner sc = new Scanner(System.in);
-
+		c=sc.nextInt();
+		
 		System.out.println("Enter the value of x in radian : ");
 		x = sc.nextDouble();
 
-		System.out.println("sin(" + x + ") : " + sine2(x));
-
-		System.out.println("cos(" + x + ") : " + cos(x));
-		System.out.println("tan(" + x + ") : " + tan(x));
+		switch(c) {
+		case 1:
+			System.out.println("sin(" + x + ") = " + sine2(x));
+			System.out.println("cos(" + x + ") = " + cos(x));
+			System.out.println("tan(" + x + ") = " + tan(x));
+			break;
+			
+		case 2:
+			rad=toradian(x);
+			System.out.println("sin(" + x + ") = " + sine2(rad));
+			System.out.println("cos(" + x + ") = " + cos(rad));
+			System.out.println("tan(" + x + ") = " + tan(rad));
+			break;
+			
+		default:
+			System.out.println("Choose a proper type of output output");
+		}
+		
+		
 
 		sc.close();
 
